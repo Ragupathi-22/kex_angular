@@ -1,0 +1,163 @@
+@if (isLoading) {
+<app-loading></app-loading>
+}
+@if (!isLoading) {
+<!-- Row 1 -->
+<div class="d-flex flex-row justify-content-between">
+    <p class="h4 text-danger"><span>{{this.invoiceDetail?.['Client: Contact Name']}}</span><span>({{this.invoiceDetail?.['Inv: #']}})</span>
+    </p>
+    <button class="border-0" (click)="onBack()"><i class=" fa-solid text-danger fa-arrow-left"></i></button>
+</div>
+
+<!-- Row 2 Client Info-->
+<div class="mt-3 row2">
+    <p class="p-3 h6 text-danger">BASIC INFO</p>
+</div>
+
+<div class="container-fluid">
+    <div class="row p-3" id="clientInfo">
+        <div class="col-lg-3 col-md-4 col-sm-6 col-12 d-flex flex-column mt-2">
+            <label>Invoice #</label>
+            <input type="text" [value]="this.invoiceDetail?.['Inv: #']" class="border-0 p-2 mt-1">
+        </div>
+
+        <div class="col-lg-3 col-md-4 col-sm-6 col-12 d-flex flex-column mt-2">
+            <label>Client Name</label>
+            <input type="text" [value]="this.invoiceDetail?.['Client: Name']" readonly class="border-0 p-2 mt-1">
+        </div>
+
+        <div class="col-lg-3 col-md-4 col-sm-6 col-12 d-flex flex-column mt-2">
+            <label>Contact Name</label>
+            <input type="text" [value]="this.invoiceDetail?.['Client: Contact Name']" readonly class="border-0 p-2 mt-1">
+        </div>
+
+        <div class="col-lg-3 col-md-4 col-sm-6 col-12 d-flex flex-column mt-2">
+            <label>Client ID</label>
+            <input type="text" [value]="this.invoiceDetail?.['Client: Number']" readonly class="border-0 p-2 mt-1">
+        </div>
+
+        <div class="col-lg-3 col-md-4 col-sm-6 col-12 d-flex flex-column mt-2">
+            <label>Phone Number</label>
+            <input type="text" [value]="this.invoiceDetail?.['Client: Work Phone']" readonly class="border-0 p-2 mt-1">
+        </div>
+
+        <div class="col-lg-3 col-md-4 col-sm-6 col-12 d-flex flex-column mt-2">
+            <label>Branch</label>
+            <input type="text" [value]="this.invoiceDetail?.['Client: Trading As Name']" readonly class="border-0 p-2 mt-1">
+        </div>
+
+        <div class="col-lg-3 col-md-4 col-sm-6 col-12 d-flex flex-column mt-2">
+            <label>Run</label>
+            <input type="text" [value]="this.invoiceDetail?.['Client: Run']" readonly class="border-0 p-2 mt-1">
+        </div>
+    </div>
+</div>
+
+<br>
+<!-- Row 3 -->
+<div id="clientInfo" class="container-fluid ">
+    <div class="row p-3 d-flex flex-row">
+        <div class="col-6 d-flex flex-column">
+            <div class="mt-2 row2">
+                <p class="p-3 h6 text-danger">BILLING ADDRESS</p>
+            </div>
+            <textarea cols="1" rows="6" [value]="this.invoiceDetail?.['Client: Billing Address']" type="text" readonly class="mt-1 p-2 border-0"></textarea>
+        </div>
+        <div class="col-6 d-flex flex-column">
+            <div class="mt-2 row2">
+                <p class="p-3 h6 text-danger">DELIVERY NAME AND ADDRESS</p>
+            </div>
+            <input type="text" [value]="this.invoiceDetail?.['Client: Delivery Contact Name']" readonly class="border-0 p-2 mt-1">
+            <div class="d-flex  flex-row">
+                <input type="text" readonly [value]="this.invoiceDetail?.['Client: Delivery Phone']" class="col-6 border-0 p-2 mt-1">
+                <input style="margin-left: 1px;" [value]="this.invoiceDetail?.['Client: Delivery Phone ext']" type="text" readonly class="col-6 border-0 p-2 mt-1">
+            </div>
+            <textarea cols="1" rows="2" type="text" [value]="this.invoiceDetail?.['Client: Delivery Address']" readonly class="mt-1 p-2 border-0"></textarea>
+        </div>
+    </div>
+</div>
+
+<!-- Row 4 -->
+
+<div id="clientInfo" class="container-fluid mt-3">
+    <div class="p-3 d-flex flex-row justify-content-between">
+        <div class="col-3 border align-items-center">
+            <p class="text-center border p-3 row2 h6 text-danger m-0">Date</p>
+            <p class="text-center border p-3 bg-white m-0">{{this.invoiceDetail?.['Inv: Date']}}</p>
+            <p class="text-center border p-3 row2 h6 text-danger m-0">P.O #</p>
+            <p class="text-center border p-3 bg-white m-0">{{this.invoiceDetail?.['Client: Order #']}}</p>
+            <p class="text-center border p-3 row2 h6 text-danger m-0">ServiceFrequency</p>
+            <p class="text-center border p-3 bg-white m-0">{{this.invoiceDetail?.['Inv: Service Frequency']}}</p>
+            <p class="text-center border p-3 row2 h6 text-danger m-0">Contract Period</p>
+            <p class="text-center border p-3 bg-white m-0">{{this.invoiceDetail?.['Inv: Contract Period']}}</p>
+            <p class="text-center border p-3 row2 h6 text-danger m-0">Due Date</p>
+            <p class="text-center border p-3 bg-white m-0">{{this.invoiceDetail?.['Inv: Due Date']}}</p>
+        </div>
+        <div class="col-9 px-3 ms-3"> 
+            <div class="row2">
+                <p class="p-3 h6 text-danger">Payments</p>
+            </div>
+            <div class="d-flex flex-row justify-content-end align-items-center">
+                <p>Inv.Fully Paid?</p>
+                <input type="text" [value]="this.invoiceDetail?.['Pmt: Inv fully Paid?']" readonly class="border-0 p-2 ms-3">
+            </div>
+            <div>
+                <table #dataTable id="dataTable1" datatable [dtOptions]="dtOptions1" [dtTrigger]="dtTrigger1"
+                    class="table table-hover table-bordered text-start" style="font-size: 14px;">
+                    <tfoot>
+                        <tr> 
+                            <td colspan="2" class="text-end" style="border-right: none;">Total Payment</td>
+                            <td colspan="1" class="text-end" style="border-left: none;border-right: none;">{{ invoiceDetail?.['Total before VAT'] }}</td>
+                            <td colspan="1" style="border-left: none;"></td>
+                        
+                        </tr>
+                        
+                        <tr>
+                            <td colspan="2" class="text-end" style="border-right: none;">Invoice Total</td>
+                            <td colspan="1" class="text-end" style="border-left: none;border-right: none;">{{ this.invoiceDetail?.['VAT: Amount: Sum'] }}</td>
+                            <td colspan="1" style="border-left: none;"></td>
+                      
+                        </tr>
+                        <tr>
+                            <td colspan="2" class="text-end" style="border-right: none;">Bal.OS Incl.VAT</td>
+                            <td colspan="1" class="text-end" style="border-left: none;border-right: none;">{{ this.invoiceDetail?.['Total Incl.VAT'] }}</td>
+                            <td colspan="1" style="border-left: none;"></td>
+                       
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Row 5 -->
+<div class="mt-3 mb-3">
+    <table #dataTable id="dataTable2" datatable [dtOptions]="dtOptions2" [dtTrigger]="dtTrigger2"
+        class="table  table-hover table-bordered text-start" style="font-size: 14px;">
+        <tfoot>
+            <tr>
+                <td colspan="7" class="text-end" style="border-right: none;">SUB-TOTAL</td>
+                <td style="border-left: none;">{{ this.invoiceDetail?.['Total before VAT'] }}</td>
+            </tr>
+            <tr>
+                <td colspan="7" class="text-end" style="border-right: none;">12.5% VAT</td>
+                <td style="border-left: none;">{{ this.invoiceDetail?.['VAT: Amount: Sum'] }}</td>
+            </tr>
+            <tr>
+                <td colspan="7" class="text-end" style="border-right: none;">TOTAL</td>
+                <td style="border-left: none;">{{ this.invoiceDetail?.['Total Incl.VAT'] }}</td>
+            </tr>
+        </tfoot>
+        
+    </table>
+</div>
+
+<!-- Row 6 -->
+<div class="container-fluid d-flex flex-column mt-2">
+    <p>Comments</p>
+    <textarea rows="8" col="1" readonly  class="p-2 border-0"> </textarea>
+</div>
+
+
+}

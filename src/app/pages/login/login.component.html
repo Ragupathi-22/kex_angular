@@ -1,0 +1,29 @@
+@if (isLoading) {
+    <app-loading></app-loading>
+}
+
+<div class="container-fluid d-flex flex-column align-items-center justify-items-center ">
+
+    <div class="wrapper d-flex flex-column justify-items-center align-items-center">
+        <div>
+            <img src="https://cwpteam.ntplstaging.com/kex_clientportal/assets/images/logo.png" width="250px">
+        </div>
+        <div>
+            <p class="h5 mt-3 mb-3">Sign In</p><br>
+        </div>
+        <form class="form-group" [formGroup]="loginForm">
+            <div>
+                <input class="form-control" placeholder="User Name" type="text" formControlName="name">
+            </div>
+            <br>
+            <div>
+                <input class="form-control" placeholder="Password" type="password" formControlName="password">
+            </div>
+            <br>
+            <button class="btn btn-md btn-danger" style="border-radius: 40px;width: 100%;"                 (click)="onLogin()">Login</button>
+        </form>
+        <br>
+        <p class="text-center text-danger overflow-hidden">{{errorMessage}}</p>
+    </div>
+
+</div>

@@ -1,0 +1,35 @@
+.btn-custom {
+  background-color: transparent;
+  color: white;
+  border: none;
+  border-radius: 50px;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: bold;
+  transition: all 0.3s ease-in-out;
+}
+
+.btn-custom:hover,
+.btn-custom:focus,
+.btn-custom:active {
+  background-color: white !important;
+  color: red !important;
+  outline: none;
+  box-shadow: none;
+}
+
+.btn-custom.active {
+  background-color: white !important;
+  color: red !important;
+  border-radius: 50px;
+}
+
+#logout {
+  color: #ffffff;
+  transition: all 0.3s ease-in-out;
+  transform: scale(1);
+}
+
+#logout:hover {
+  transform: scale(1.3);
+}

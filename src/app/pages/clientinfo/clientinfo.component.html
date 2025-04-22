@@ -1,0 +1,224 @@
+<!-- loading -->
+ @if (loading) {
+ <app-loading ></app-loading>
+ }
+
+ @if (!loading) {
+<!-- Row 1 -->
+<div class="d-flex flex-row justify-content-between">
+    <p class="h4 text-danger"><span>{{ clientInfo['Client: Name'] }}</span><span>({{ clientInfo['Client: #']}})</span>
+    </p>
+    <button class="btn btn-danger btn-md p-2">Edit <i class="fa-solid fa-pen-to-square" style="color: #ffffff;"></i></button>
+</div>
+
+<!-- Row 2 Client Info-->
+<div  class="mt-3 row2">
+    <p class="p-3 h6 text-danger">CLIENT INFO</p>
+</div>
+
+<div class="container-fluid">
+        <div class="row p-3" id="clientInfo">
+            <div class="col-lg-3 col-md-4 col-sm-6 col-12 d-flex flex-column mt-2">
+                <label>Client ID</label>
+                <input type="text" readonly [value]="clientInfo['Client: #']" class="border-0 p-2 mt-1">
+            </div>
+    
+            <div class="col-lg-3 col-md-4 col-sm-6 col-12 d-flex flex-column mt-2">
+                <label>Client Name</label>
+                <input type="text" readonly [value]="clientInfo['Client: Name']" class="border-0 p-2 mt-1">
+            </div>
+    
+            <div class="col-lg-3 col-md-4 col-sm-6 col-12 d-flex flex-column mt-2">
+                <label>Trading</label>
+                <input type="text" readonly [value]="clientInfo['Contact: Trading Name']" class="border-0 p-2 mt-1">
+            </div>
+    
+            <div class="col-lg-3 col-md-4 col-sm-6 col-12 d-flex flex-column mt-2">
+                <label>Trading Name</label>
+                <input type="text" readonly [value]="clientInfo['Contact: Trading As Label']" class="border-0 p-2 mt-1">
+            </div>
+    
+            <div class="col-lg-3 col-md-4 col-sm-6 col-12 d-flex flex-column mt-2">
+                <label>Billing Type</label>
+                <input type="text" readonly [value]="clientInfo.BillingType" class="border-0 p-2 mt-1">
+            </div>
+    
+            <div class="col-lg-3 col-md-4 col-sm-6 col-12 d-flex flex-column mt-2">
+                <label>Billing Frequency</label>
+                <input type="text" readonly [value]="clientInfo.BillingFreguency" class="border-0 p-2 mt-1">
+            </div>
+    
+            <div class="col-lg-3 col-md-4 col-sm-6 col-12 d-flex flex-column mt-2">
+                <label>Type</label>
+                <input type="text" readonly [value]="clientInfo['Client: Type']" class="border-0 p-2 mt-1">
+            </div>
+            <div class="col-lg-3 col-md-4 col-sm-6 col-12 mt-2">
+                <label>Monthly</label>
+                <table class="w-100 border-0">
+                    <tbody>
+                        <tr>
+                            <td class="w-50 pe-1">
+                                <input type="text" readonly [value]="clientInfo['Delivery: Run']" class="border-0 p-2 mt-1 w-100">
+                            </td>
+                            <td class="w-25">
+                                <input type="text" readonly [value]="clientInfo.MontlhyRouteSort" class="border-0 p-2 mt-1 w-100">
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div><div class="col-lg-3 col-md-4 col-sm-6 col-12 mt-2">
+                <label>Fortnightly</label>
+                <table class="w-100 border-0">
+                    <tbody>
+                        <tr>
+                            <td class="w-50 pe-1">
+                                <input type="text" readonly [value]="clientInfo['Delivery: RunBiMonthly']" class="border-0 p-2 mt-1 w-100">
+                            </td>
+                            <td class="w-25">
+                                <input type="text" readonly [value]="clientInfo.FortNightlyRouteSort" class="border-0 p-2 mt-1 w-100">
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+              
+        </div>
+</div>
+
+<!-- Row 3  Billing Info-->
+<div  class="mt-3 row2">
+        <p class="p-3 h6 text-danger">BILLING INFO</p>
+    </div>
+
+<div class="container-fluid">
+        <div class="row p-3" id="clientInfo">
+            <div class="col-lg-3 col-md-4 col-sm-6 col-12 d-flex flex-column mt-2">
+                <label>Name</label>
+                <input type="text" readonly [value]="clientInfo['Contact: Name']" class="border-0 p-2 mt-1">
+            </div>
+    
+            <div class="col-lg-3 col-md-4 col-sm-6 col-12 d-flex flex-column mt-2">
+                <label>Position</label>
+                <input type="text" readonly [value]="clientInfo['Contact: Position']" class="border-0 p-2 mt-1">
+            </div>
+            <div class="col-lg-3 col-md-4 col-sm-6 col-12 mt-2">
+                <table class="w-100 border-0">
+                    <tbody>
+                        <tr>
+                            <td class="w-50 pe-1">
+                                <label>Phone 1</label>
+                                <input type="text" readonly [value]="clientInfo['Contact: Ph: Work']" class="border-0 p-2 mt-1 w-100">
+                            </td>
+                            <td class="w-50">
+                                <label>EXT</label>
+                                <input type="text" readonly [value]="clientInfo['Contact: Ph: Ext']" class="border-0 p-2 mt-1 w-100">
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="col-lg-3 col-md-4 col-sm-6 col-12 mt-2">
+                <table class="w-100 border-0">
+                    <tbody>
+                        <tr>
+                            <td class="w-50 pe-1">
+                                <label>Phone 2</label>
+                                <input type="text" readonly [value]="clientInfo['Contact: Ph: Work 2']" class="border-0 p-2 mt-1 w-100">
+                            </td>
+                            <td class="w-50">
+                                <label>EXT</label>
+                                <input type="text" readonly [value]="clientInfo['Contact: Ph: Ext 2']" class="border-0 p-2 mt-1 w-100">
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="col-lg-3 col-md-4 col-sm-6 col-12 d-flex flex-column mt-2">
+                <label>Cellular</label>
+                <input type="text" readonly [value]="clientInfo['Contact: Cell']" class="border-0 p-2 mt-1">
+            </div>
+    
+            <div class="col-lg-3 col-md-4 col-sm-6 col-12 d-flex flex-column mt-2">
+                <label>Email</label>
+                <input type="text" readonly [value]="clientInfo['Contact: E Mail']" class="border-0 p-2 mt-1">
+            </div>
+    
+            <div class="col-lg-6 d-flex flex-column mt-2" >
+                <label>Billing Address</label>
+                <textarea  cols="1" rows="3"   type="text" readonly [value]="clientInfo['Billing: Address']" class="border-0 p-2 mt-1"></textarea>
+            </div>
+    
+        </div>
+</div>
+
+
+<!-- Row 4  Delivery Info-->
+<div  class="mt-3 row2">
+        <p class="p-3 h6 text-danger">DELIVERY INFO</p>
+    </div>
+
+<div class="container-fluid">
+        <div class="row p-3" id="clientInfo">
+            <div class="col-lg-3 col-md-4 col-sm-6 col-12 d-flex flex-column mt-2">
+                <label>Name</label>
+                <input type="text" readonly [value]="clientInfo['Delivery: Contact Name']" class="border-0 p-2 mt-1">
+            </div>
+    
+            <div class="col-lg-3 col-md-4 col-sm-6 col-12 d-flex flex-column mt-2">
+                <label>Position</label>
+                <input type="text" readonly [value]="clientInfo['Delivery: Position']" class="border-0 p-2 mt-1">
+            </div>
+            <div class="col-lg-3 col-md-4 col-sm-6 col-12 mt-2">
+                <table class="w-100 border-0">
+                    <tbody>
+                        <tr>
+                            <td class="w-50 pe-1">
+                                <label>Phone 1</label>
+                                <input type="text" readonly [value]="clientInfo['Delivery: Phone']" class="border-0 p-2 mt-1 w-100">
+                            </td>
+                            <td class="w-50">
+                                <label>EXT</label>
+                                <input type="text" readonly [value]="clientInfo['Delivery: Phone ext']" class="border-0 p-2 mt-1 w-100">
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="col-lg-3 col-md-4 col-sm-6 col-12 mt-2">
+                <table class="w-100 border-0">
+                    <tbody>
+                        <tr>
+                            <td class="w-50 pe-1">
+                                <label>Phone 2</label>
+                                <input type="text" readonly [value]="clientInfo['Delivery: Ph: Work 2']" class="border-0 p-2 mt-1 w-100">
+                            </td>
+                            <td class="w-50">
+                                <label>EXT</label>
+                                <input type="text" readonly [value]="clientInfo['Delivery: Ph: Ext 2']" class="border-0 p-2 mt-1 w-100">
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="col-lg-3 col-md-4 col-sm-6 col-12 d-flex flex-column mt-2">
+                <label>Cellular</label>
+                <input type="text" readonly [value]="clientInfo['Delivery: Cell']" class="border-0 p-2 mt-1">
+            </div>
+    
+            <div class="col-lg-3 col-md-4 col-sm-6 col-12 d-flex flex-column mt-2">
+                <label>Email</label>
+                <input type="text" readonly [value]="clientInfo['Delivery: E Mail']" class="border-0 p-2 mt-1">
+            </div>
+    
+            <div class="col-lg-6 d-flex flex-column mt-2" >
+                <label>Delivery Address</label>
+                <textarea  cols="1" rows="3"   type="text" readonly [value]="clientInfo['Delivery: Address']" class="border-0 p-2 mt-1"></textarea>
+            </div>
+    
+        </div>
+</div>
+ }

@@ -1,0 +1,43 @@
+<!-- Nav bar -->
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid" style="background-color: #C80A00;">
+        <div class="bg-white" style="margin-left: -12px;">
+            <img src="https://cwpteam.ntplstaging.com/kex_clientportal/assets/images/logo.png" width="200px" height="65px">
+        </div>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll"
+            aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse " id="navbarScroll">
+            <ul class="navbar-nav ms-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 150px;">
+                <li class="nav-item"><a class="btn btn-sm btn-custom ps-3 pe-3" routerLink="/dashboard/clientinfo"
+                        routerLinkActive="active">CLIENT INFO</a></li>
+                <li class="nav-item"><a class="btn btn-sm btn-custom ps-3 pe-3" routerLink="/dashboard/deliverynotes"
+                        routerLinkActive="active">DELIVERY
+                        NOTES</a>
+                </li>
+                <li class="nav-item"><a class="btn btn-sm btn-custom ps-3 pe-3" routerLink="/dashboard/invoices"
+                        routerLinkActive="active">INVOICES</a></li>
+                <li class="nav-item"><a class="btn btn-sm btn-custom ps-3 pe-3" routerLink="/dashboard/customorders"
+                        routerLinkActive="active">CUSTOM ORDERS</a>
+                </li>
+                <li class="nav-item"><a class="btn btn-sm btn-custom ps-3 pe-3" routerLink="/dashboard/matLocation"
+                        routerLinkActive="active">MAT
+                        LOCATIONS</a>
+                </li>
+                <li class="nav-item"><button class="btn border-0"><i (click)="onLogOut()"
+                            class="fa-solid fa-right-from-bracket" id="logout"></i></button></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- content -->
+<div class="pt-3 ps-5 pe-5 pb-5">
+    <router-outlet></router-outlet>
+</div>
+
+<!-- Footer -->
+<div class="container-fluid" style="background-color: #C80A00; bottom: 0px;position: fixed;height: 25px;">
+    <p class="text-light text-center">© Copyright 2025 KEX Limited. All Rights Reserved.</p>
+</div>

@@ -1,0 +1,15 @@
+input,textarea {
+    background-color: #E9ECEF;
+}
+
+.row2 {
+    background-color: #FFF4F4;
+    margin-left: -10px;
+    margin-right: 10px;
+}
+
+#clientInfo {
+    background-color: white;
+    box-shadow: 0px 0px 15px #dadada;
+    margin-top: -10px;
+}

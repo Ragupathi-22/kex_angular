@@ -1,0 +1,18 @@
+<!-- Loading -->
+@if (isLoading) {
+<app-loading></app-loading>
+}
+
+
+<!-- Row 1 -->
+<div class="d-flex flex-row justify-content-start">
+    <p class="h4 text-danger">Mat Location</p>
+</div>
+
+
+<!-- Row 2 -->
+<div>
+    <table  #dataTable id="dataTable" datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger"
+        class="table table-hover table-bordered text-start" style="font-size: 14px;">
+    </table>
+</div>

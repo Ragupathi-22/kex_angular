@@ -1,1 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
+th {
+    background-color: #FFF4F4 !important;
+}
+table,th,td {
+    text-align: left !important;
+}

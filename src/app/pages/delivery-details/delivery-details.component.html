@@ -1,0 +1,137 @@
+@if (isLoading) {
+<app-loading></app-loading>
+}
+
+@if (!isLoading) {
+<!-- Row 1 -->
+<div class="d-flex flex-row justify-content-between">
+    <p class="h4 text-danger"><span>{{ this.delivery_details?.['Client: Name']}}</span><span>({{
+            this.delivery_details?.['Client: #']}})</span>
+    </p>
+    <button  class="border-0"><i class=" fa-solid text-danger fa-arrow-left" (click)="onBack()"></i></button>
+</div>
+<!-- Row 2 -->
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12 col-sm-6 col-md-4 col-lg-2 d-flex flex-column mt-2">
+            <label>Delivery Note #</label>
+            <input autofocus type="text" [value]="this.delivery_details!['Delivery: Note#']" readonly class="border-0 p-2 mt-1">
+        </div>
+        <div class="col-12 col-sm-6 col-md-4 col-lg-2 d-flex flex-column mt-2">
+            <label>Batch ID</label>
+            <input type="text" [value]="this.delivery_details?.BatchID" readonly class="border-0 p-2 mt-1">
+        </div>
+        <div class="col-12 col-sm-6 col-md-4 col-lg-2 d-flex flex-column mt-2">
+            <label>Date</label>
+            <input type="text" [value]="this.delivery_details?.['Delivery: Date']" readonly class="border-0 p-2 mt-1">
+        </div>
+        <div class="col-12 col-sm-6 col-md-4 col-lg-2 d-flex flex-column mt-2">
+            <label>RUN</label>
+            <input type="text" [value]="this.delivery_details?.['Delivery: Zone']" readonly class="border-0 p-2 mt-1">
+        </div>
+        <div class="col-12 col-sm-6 col-md-4 col-lg-2 d-flex flex-column mt-2">
+            <label>VEHICLE #</label>
+            <input type="text" [value]="this.delivery_details?.['Delivery: Vehicle#']" readonly class="border-0 p-2 mt-1">
+        </div>
+    </div>
+
+</div>
+
+
+<!-- Row 3 -->
+<div class="container-fluid">
+    <div class="row">
+        <!-- Left Section: Client Info -->
+        <div class="col-12 col-md-6">
+            <div class="p-1 mt-2" style="background-color: #FFF4F4;">
+                <p class="h5 text-danger">Client</p>
+            </div>
+            <div class="row g-3 mt-2">
+                <div class="col-12 col-sm-6 d-flex flex-column">
+                    <label>Client #</label>
+                    <input type="text" [value]="this.delivery_details?.['Client: #']" readonly class="border-0 p-2 mt-1">
+                </div>
+                <div class="col-12 col-sm-6 d-flex flex-column">
+                    <label>Client Name</label>
+                    <input type="text" [value]="this.delivery_details?.['Client: Name']" readonly class="border-0 p-2 mt-1">
+                </div>
+                <div class="col-12 col-sm-6 d-flex flex-column">
+                    <label>Trading</label>
+                    <input type="text" [value]="this.delivery_details?.['Client: Trading As Label']" readonly class="border-0 p-2 mt-1">
+                </div>
+                <div class="col-12 col-sm-6 d-flex flex-column">
+                    <label>Trading Name</label>
+                    <input type="text" readonly [value]="this.delivery_details?.['Client: Trading As Name']" class="border-0 p-2 mt-1">
+                </div>
+
+                <!-- Row for Phone & Ext -->
+                <div class="col-12 col-sm-6 d-flex flex-column flex-sm-row">
+                    <div class="col-sm-8 d-flex flex-column">
+                        <label>Phone 1</label>
+                        <input type="text" [value]="this.delivery_details?.['Contact: Ph: Work']" readonly class="border-0 p-2 mt-1">
+                    </div>
+                    <div class="col-sm-4 d-flex flex-column " style="margin-left: 1px;">
+                        <label>Ext</label>
+                        <input type="text" [value]="this.delivery_details?.['Contact: Ph: Work Ext']" readonly class="border-0 p-2 mt-1">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Right Section: Delivery Info -->
+        <div class="col-12 col-md-6">
+            <div class="p-1 mt-2" style="background-color: #FFF4F4;">
+                <p class="h5 text-danger">Delivery Info</p>
+            </div>
+            <div class="row g-3 mt-2">
+                <div class="col-12 col-sm-6 d-flex flex-column ">
+                    <label>Name</label>
+                    <input type="text" readonly  [value]="this.delivery_details?.['Delivery: Contact Name']" class="border-0 p-2 mt-1">
+                </div>
+                <div class="col-12 col-sm-6 d-flex flex-column flex-sm-row">
+                    <div class="col-sm-8 d-flex flex-column">
+                        <label>Phone 1</label>
+                        <input type="text" readonly [value]="this.delivery_details?.['Delivery: Contact Phone#']" class="border-0 p-2 mt-1">
+                    </div>
+                    <div class="col-sm-4 d-flex flex-column" style="margin-left: 1px;">
+                        <label>EXT</label>
+                        <input type="text" readonly [value]="this.delivery_details?.['Delivery: Contact Phone# ext']" class="border-0 p-2 mt-1">
+                    </div>
+                </div>
+                <div class="col-12 d-flex flex-column">
+                    <label>Delivery Address</label>
+                    <textarea readonly rows="4" [value]="this.delivery_details?.['Delivery: Address']" cols="1" class="border-0 p-2 mt-1"></textarea>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Row 4 -->
+<div class="container-fluid">
+    <div class="col-12 p-1 mt-2" style="background-color: #FFF4F4;">
+        <p class="h5 text-danger">Billing Address</p>
+    </div>
+    <div class="col-12 d-flex flex-column">
+        <textarea rows="4" cols="1" [value]="this.delivery_details?.['Billing: Address']" readonly class="p-2 mt-2 border-0"></textarea>
+    </div>
+</div>
+
+<!-- Row 5 -->
+<div>
+    <table #dataTable id="dataTable1" datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger"
+        class="table table-hover table-bordered text-start" style="font-size: 14px;">
+    </table>
+</div>
+
+<!-- Row 6 -->
+<div class="container-fluid d-flex flex-column mt-2">
+    <p>Comments</p>
+    <textarea rows="8" col="1" readonly [value]="this.delivery_details?.Comments" class="p-2 border-0"> </textarea>
+</div>
+
+
+}
