@@ -1,0 +1,52 @@
+@if (isLoading) {
+<app-loading></app-loading>
+}
+
+<div class="container-fluid d-flex flex-column align-items-center justify-items-center ">
+
+    <div class="wrapper d-flex flex-column justify-items-center align-items-center">
+        <div>
+            <img src="https://cwpteam.ntplstaging.com/kex_clientportal/assets/images/logo.png" width="250px">
+        </div>
+        <div>
+            <p class="h5 mt-3 mb-3">Register</p><br>
+        </div>
+        <form class="form form-group" [formGroup]="loginForm">
+            <div>
+                <input class="form-control" placeholder="Company" type="text" formControlName="company">
+            </div>
+            <br>
+            <div>
+                <input class="form-control" placeholder="E-Mail " type="email" formControlName="email">
+                <span class="text-danger" *ngIf="loginForm.get('email')?.touched && loginForm.get('email')?.invalid">
+                    <ng-container *ngIf="loginForm.get('email')?.errors?.['required']">
+                        Email is required.
+                    </ng-container>
+                    <ng-container *ngIf="loginForm.get('email')?.errors?.['email']">
+                        Enter a valid email address.
+                    </ng-container>
+                </span>
+            </div>
+            <br>
+            <div>
+                <input class="form-control" placeholder="Full Name" type="text" formControlName="fullName">
+            </div>
+            <br>
+            <div>
+                <input class="form-control" placeholder="Phone Number" type="text" formControlName="phoneNo">
+            </div>
+            <br>
+            <button class="btn btn-md btn-danger" style="border-radius: 40px;width: 100%;"
+                (click)="onLogin()">Register</button>
+        </form>
+        <p class="text-center text-danger overflow-hidden">{{errorMessage}}</p>
+        <div class="w-100 text-start">
+            <a routerLink="/login" style="text-decoration: none;cursor: pointer;">
+              <i class="fa-solid fa-arrow-left-long"></i> Login
+            </a>
+        </div>
+    </div>
+
+      
+
+</div>

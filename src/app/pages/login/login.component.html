@@ -1,5 +1,5 @@
 @if (isLoading) {
-    <app-loading></app-loading>
+<app-loading></app-loading>
 }
 
 <div class="container-fluid d-flex flex-column align-items-center justify-items-center ">
@@ -20,10 +20,43 @@
                 <input class="form-control" placeholder="Password" type="password" formControlName="password">
             </div>
             <br>
-            <button class="btn btn-md btn-danger" style="border-radius: 40px;width: 100%;"                 (click)="onLogin()">Login</button>
+            <button class="btn btn-md btn-danger" style="border-radius: 40px;width: 100%;"
+                (click)="onLogin()">Login</button>
+            <br>
+            <p class="text-center text-danger overflow-hidden">{{errorMessage}}</p>
         </form>
-        <br>
-        <p class="text-center text-danger overflow-hidden">{{errorMessage}}</p>
-    </div>
+        <div class="d-flex justify-content-between w-100">
+            <a routerLink="/register" style="text-decoration: none;cursor: pointer;">Register <i class="fa-solid fa-arrow-right"></i></a>
+            <!-- Button trigger modal -->
+            <a data-bs-toggle="modal" data-bs-target="#staticBackdrop" class="text-danger"
+                style="cursor: pointer;text-decoration: none;">Forgot
+                Password ?</a>
+        </div>
 
+    </div>
+</div>
+
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="staticBackdropLabel">Forgot Password</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <label class="text h6">Please enter the register email id</label>
+                <input type="email" class="form-control" placeholder="Email">
+                <p class="text-danger mt-2">We will send you a link to reset your password*</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Submit</button>
+            </div>
+        </div>
+    </div>
 </div>

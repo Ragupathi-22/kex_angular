@@ -1,13 +1,13 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { UserService } from '../../services/userService/user.service';
 import { UserModel, UserResponseModel } from '../../model/userModel';
 import { LoadingComponent } from '../loading/loading.component';
 
 @Component({
   selector: 'app-login',
-  imports: [ReactiveFormsModule,LoadingComponent],
+  imports: [ReactiveFormsModule,LoadingComponent,RouterLink],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })

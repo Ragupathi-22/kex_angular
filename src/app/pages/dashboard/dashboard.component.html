@@ -1,8 +1,10 @@
 <!-- Nav bar -->
+ 
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
     <div class="container-fluid" style="background-color: #C80A00;">
         <div class="bg-white" style="margin-left: -12px;">
-            <img src="https://cwpteam.ntplstaging.com/kex_clientportal/assets/images/logo.png" width="200px" height="65px">
+            <img src="https://cwpteam.ntplstaging.com/kex_clientportal/assets/images/logo.png" width="200px"
+                height="65px">
         </div>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll"
             aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
@@ -10,6 +12,16 @@
         </button>
         <div class="collapse navbar-collapse " id="navbarScroll">
             <ul class="navbar-nav ms-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 150px;">
+                <li class="nav-item ">
+                    <select class="btn btn-sm btn-custom ps-3 pe-3" [(ngModel)]="selectedRequest"
+                        (change)="onRequestChange($event)" name="requestType">
+                        <option value="0">Requests</option>
+                        <option value="1">Ad Hoc Service</option>
+                        <option value="2">Edit Client Details</option>
+                        <option value="3">Site Visit</option>
+                        <option value="4">Statement</option>
+                    </select>
+                </li>
                 <li class="nav-item"><a class="btn btn-sm btn-custom ps-3 pe-3" routerLink="/dashboard/clientinfo"
                         routerLinkActive="active">CLIENT INFO</a></li>
                 <li class="nav-item"><a class="btn btn-sm btn-custom ps-3 pe-3" routerLink="/dashboard/deliverynotes"
@@ -25,8 +37,8 @@
                         routerLinkActive="active">MAT
                         LOCATIONS</a>
                 </li>
-                <li class="nav-item"><button class="btn border-0"><i (click)="onLogOut()"
-                            class="fa-solid fa-right-from-bracket" id="logout"></i></button></li>
+                <li class="nav-item"><button class="btn btn-sm btn-custom ps-3 pe-3"
+                        (click)="onLogOut()">Logout</button></li>
             </ul>
         </div>
     </div>
@@ -34,6 +46,95 @@
 
 <!-- content -->
 <div class="pt-3 ps-5 pe-5 pb-5">
+
+    <div class="intro-video-overlay col-12" *ngIf="showIntroVideo" (click)="closeIntroVideo()">
+        <div class="video-modal" (click)="$event.stopPropagation()">
+            <button class="close-btn" (click)="closeIntroVideo()">×</button>
+            <video width="700" controls autoplay muted>
+                <source src="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
+                    type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+    </div>
+    <!-- Ad Hoc Service Modal (Popover) -->
+     @if (currentModal=='adHoc') {
+        <div  class="ad-hoc-modal-overlay" (click)="revertService()">
+            <div class="ad-hoc-modal-content" (click)="$event.stopPropagation()">
+                <button class="close-btn text-danger" (click)="revertService()">×</button>
+                <div class="row">
+                    <div class="card-headers border border-rounded bg-warning p-1 border border-rounded">
+                        Requested an Ad Hoc Service
+                    </div>
+                    <div class="card-body border border-rounded p-2">
+                        <input type="date" class="form-control mt-3" placeholder="Select Date">
+                        <button class="btn btn-primary mt-2">Submit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+     }
+     @if (currentModal=='siteVisit') {
+        <div  class="ad-hoc-modal-overlay" (click)="revertService()">
+            <div class="ad-hoc-modal-content" (click)="$event.stopPropagation()">
+                <button class="close-btn text-danger" (click)="revertService()">×</button>
+                <div class="row">
+                    <div class="card-headers border border-rounded bg-warning p-1 border border-rounded">
+                        Requested a Site Visit Service
+                    </div>
+                    <div class="card-body border border-rounded">
+                        <div class="row mb-3 mt-3">
+                          <label class="col-md-5 col-form-label">Contact Person</label>
+                          <div class="col-md-7">
+                            <input type="text" class="form-control" placeholder="Enter Full Name">
+                          </div>
+                        </div>
+                        
+                        <div class="row mb-3">
+                          <label class="col-md-5 col-form-label">Contact Phone Number</label>
+                          <div class="col-md-7">
+                            <input type="text" class="form-control" placeholder="Phone Number">
+                          </div>
+                        </div>
+                      
+                        <div class="row mb-3">
+                          <label class="col-md-5 col-form-label">Email</label>
+                          <div class="col-md-7">
+                            <input type="email" class="form-control" placeholder="Email">
+                          </div>
+                        </div>
+                      
+                        <div class="row mb-3">
+                          <label class="col-md-5 col-form-label">Address for Site Visit</label>
+                          <div class="col-md-7">
+                            <textarea class="form-control" placeholder="Address" rows="3"></textarea>
+                          </div>
+                        </div>
+                        <button class="btn btn-primary mt-2">Submit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+     }
+        @if (currentModal=='statement') {
+            <div  class="ad-hoc-modal-overlay" (click)="revertService()">
+                <div class="ad-hoc-modal-content" (click)="$event.stopPropagation()">
+                    <button class="close-btn text-danger" (click)="revertService()">×</button>
+                    <div class="row">
+                        <div class="card-headers border border-rounded bg-warning p-1 border border-rounded">
+                            Requested a Statement Service
+                        </div>
+                        <div class="card-body border border-rounded text-center">
+                            <p class="h6 m-3">Generated Statement</p>
+                            <img src="sample.jpg" alt="Statement" ><br>
+                            <button class="btn btn-sm btn-primary m-3">Download PDF</button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        }
+ 
     <router-outlet></router-outlet>
 </div>
 
@@ -41,3 +142,5 @@
 <div class="container-fluid" style="background-color: #C80A00; bottom: 0px;position: fixed;height: 25px;">
     <p class="text-light text-center">© Copyright 2025 KEX Limited. All Rights Reserved.</p>
 </div>
+
+
